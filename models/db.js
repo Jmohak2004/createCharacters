@@ -10,8 +10,11 @@ mongoose.connect(MU)
     console.log(err)
 })
 
-charSchema = mongoose.Schema({
-    text : String
+userSchema = mongoose.Schema({
+    name:String,
+    email : String,
+    link:String
+    
 })
 
-module.exports = mongoose.model('chars',charSchema)
+module.exports = mongoose.model('users',userSchema)

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>All users</h1>
+    <a href="/">back to create User</a>
+        <% users.forEach((user)=>{ %>
+            <div>
+                <div><%= user.link %></div>
+                <h1> <%= user.name %></h1>
+                <h1> <%= user.email %> </h1>
+                <div>
+                    <a href="/edit//<%= user.id%>">Edit user</a>
+                    <a href="/delete/<%= user.id%>">Delete user</a>
+                </div>
+            </div>
+        <% }) %>
+        
+</body>
+</html>
