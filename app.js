@@ -21,13 +21,21 @@ app.post('/create',async(req,res)=>{
     res.redirect("/read")
 })
 
-app.get('/update/:id',async(req,res)=>{
-    const {userId} = req.params.id;
-    const {chamge} = req.body;
-    const updatedUser = await userModel.findOneAndUpdate({
+app.get('/edit/:userid',async(req,res)=>{
+    let userId = req.params.userid;
+    let user = await userModel.findOne({
         _id : userId
     })
+    res.render("edit",{user})
  })
+
+app.post('/update/:userid',async(req,res)=>{
+    let userId = req.params.userid;
+    let  {name,email,link} = req.body;
+    let user = await userModel.findOneAndUpdate({_id : userId},{name,email,link},{new:true})
+    res.redirect("/read")
+
+})
 app.get('/delete/:id',async(req,res)=>{
     const userId = req.params.id
     const deleteUser = await userModel.findOneAndDelete({_id : userId})
